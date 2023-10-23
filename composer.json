@@ -1,48 +1,81 @@
 {
-    "name": "yii2/template",
-    "type": "library",
-    "description": "_____",
+    "name": "yii2-extensions/queue",
+    "description": "Yii2 Queue Extension which supported DB, Redis, RabbitMQ, Beanstalk, SQS and Gearman",
+    "type": "yii2-extension",
     "keywords": [
-        "_____"
+        "yii",
+        "queue",
+        "async",
+        "gii",
+        "db",
+        "redis",
+        "rabbitmq",
+        "beanstalk",
+        "gearman",
+        "sqs"
     ],
     "license": "mit",
     "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": ">=8.1",
-        "yiisoft/yii2": "^2.2"
+        "yiisoft/yii2": "^2.2",
+        "symfony/process": "^6.3",
+        "laravel/serializable-closure": "^v1.3.0"
     },
     "require-dev": {
+        "aws/aws-sdk-php": ">=2.4",
+        "enqueue/amqp-bunny": "^0.10.0",
+        "enqueue/amqp-ext": "^0.10.8",
+        "enqueue/amqp-lib": "^0.10.0",
+        "enqueue/stomp": "^0.10.0",
         "maglnet/composer-require-checker": "^4.6",
-        "phpunit/phpunit": "^10.2",
-        "yii2-extensions/phpstan": "dev-main"
+        "pda/pheanstalk": "^v5.0.0",
+        "php-amqplib/php-amqplib": "^3.0.0",
+        "phpunit/phpunit": "^10.3.0",
+        "yii2-extensions/phpstan": "dev-main",
+        "yii2-extensions/debug": "dev-main",
+        "yii2-extensions/gii": "dev-main",
+        "yii2-extensions/redis": "dev-main"
+    },
+    "suggest": {
+        "ext-pcntl": "Need for process signals.",
+        "yiisoft/yii2-redis": "Need for Redis queue.",
+        "pda/pheanstalk": "Need for Beanstalk queue.",
+        "php-amqplib/php-amqplib": "Need for AMQP queue.",
+        "enqueue/amqp-lib": "Need for AMQP interop queue.",
+        "ext-gearman": "Need for Gearman queue.",
+        "aws/aws-sdk-php": "Need for aws SQS.",
+        "enqueue/stomp": "Need for Stomp queue."
     },
     "autoload": {
         "psr-4": {
-            "yii\\template\\": "src"
+            "yii\\queue\\": "src",
+            "yii\\queue\\amqp_interop\\": "src/drivers/amqp_interop",
+            "yii\\queue\\beanstalk\\": "src/drivers/beanstalk",
+            "yii\\queue\\db\\": "src/drivers/db",
+            "yii\\queue\\file\\": "src/drivers/file",
+            "yii\\queue\\gearman\\": "src/drivers/gearman",
+            "yii\\queue\\redis\\": "src/drivers/redis",
+            "yii\\queue\\sync\\": "src/drivers/sync",
+            "yii\\queue\\sqs\\": "src/drivers/sqs",
+            "yii\\queue\\stomp\\": "src/drivers/stomp"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "yii\\template\\tests\\": "tests"
+            "tests\\": "tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "php-http/discovery": true
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "1.0.x-dev"
+            "dev-master": "2.x-dev"
         }
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true
-        }
-    },
-    "scripts": {
-        "check-dependencies": "composer-require-checker",
-        "mutation": "roave-infection-static-analysis-plugin",
-        "phpstan": "phpstan",
-        "test": "phpunit"
     },
     "repositories": [
         {
