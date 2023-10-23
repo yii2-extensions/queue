@@ -1,24 +1,25 @@
-#code coverage
-/code_coverage
-
-# composer vendor dir
-/vendor
-/composer.lock
-
-#node_modules
-/node_modules
-
-# phpstorm project files
+# IDE & OS files
+.*.swp
+.DS_Store
+.buildpath
 .idea
+.project
+.settings
+Thumbs.db
+nbproject
 
-# phpunit
-phpunit.phar
+# vendor dirs
+vendor
+
+# composer lock files
+composer.lock
+
+# PHP CS Fixer
+.php_cs.cache
+
+# Env variables
+.env
+
+# PHP Unit cache
 .phpunit.result.cache
 .phpunit.cache
-phpunit.xlm
-
-#yii3 config packages
-/config/packages
-
-# windows thumbnail cache
-Thumbs.db
