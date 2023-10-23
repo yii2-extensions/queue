@@ -1,9 +1,33 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    <a href="https://github.com/yii2-extensions/queue" target="_blank">
+        <img src="https://www.yiiframework.com/image/yii_logo_light.svg" height="100px;">
     </a>
-    <h1 align="center">Yii2 Queue Extension</h1>
+    <h1 align="center">Queue</h1>
     <br>
+</p>
+
+<p align="center">
+    <a href="https://www.php.net/releases/8.1/en.php" target="_blank">
+        <img src="https://img.shields.io/badge/PHP-%3E%3D8.1-787CB5" alt="php-version">
+    </a>
+    <a href="https://github.com/yiisoft/yii2/tree/2.2" target="_blank">
+        <img src="https://img.shields.io/badge/Yii2%20version-2.2-blue" alt="yii2-version">
+    </a>
+    <a href="https://github.com/yii2-extensions/queue/actions/workflows/build.yml" target="_blank">
+        <img src="https://github.com/yii2-extensions/queue/actions/workflows/build.yml/badge.svg" alt="PHPUnit">
+    </a>
+    <a href="https://codecov.io/gh/yii2-extensions/queue" target="_blank">
+        <img src="https://codecov.io/gh/yii2-extensions/queue/branch/main/graph/badge.svg?token=MF0XUGVLYC" alt="Codecov">
+    </a>
+    <a href="https://github.com/yii2-extensions/queue/actions/workflows/static.yml" target="_blank">
+        <img src="https://github.com/yii2-extensions/queue/actions/workflows/static.yml/badge.svg" alt="PHPStan">
+    </a>
+    <a href="https://github.com/yii2-extensions/queue/actions/workflows/static.yml" target="_blank">
+        <img src="https://img.shields.io/badge/PHPStan%20level-1-blue" alt="PHPStan level">
+    </a>
+    <a href="https://github.styleci.io/repos/708447362?branch=main" target="_blank">
+        <img src="https://github.styleci.io/repos/708447362/shield?branch=main" alt="Code style">
+    </a>        
 </p>
 
 An extension for running tasks asynchronously via queues.
@@ -11,10 +35,6 @@ An extension for running tasks asynchronously via queues.
 It supports queues based on **DB**, **Redis**, **RabbitMQ**, **AMQP**, **Beanstalk**, **ActiveMQ** and **Gearman**.
 
 Documentation is at [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-queue/v/stable.svg)](https://packagist.org/packages/yiisoft/yii2-queue)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-queue/downloads.svg)](https://packagist.org/packages/yiisoft/yii2-queue)
-[![Build Status](https://github.com/yiisoft/yii2-queue/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-queue/actions)
 
 ## Requirements
 
