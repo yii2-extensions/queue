@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -26,11 +27,11 @@ use yii\queue\cli\Queue as CliQueue;
 class Queue extends CliQueue
 {
     /**
-     * @var Connection|array|string
+     * @var array|Connection|string
      */
     public $db = 'db';
     /**
-     * @var Mutex|array|string
+     * @var array|Mutex|string
      */
     public $mutex = 'mutex';
     /**
@@ -69,8 +70,11 @@ class Queue extends CliQueue
      *
      * @param bool $repeat whether to continue listening when queue is empty.
      * @param int $timeout number of seconds to sleep before next iteration.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
+     *
      * @internal for worker command only
+     *
      * @since 2.0.2
      */
     public function run(bool $repeat, int $timeout = 0)
@@ -140,7 +144,9 @@ class Queue extends CliQueue
      * Removes a job by ID.
      *
      * @param int $id of a job
+     *
      * @return bool
+     *
      * @since 2.0.1
      */
     public function remove($id)
@@ -170,8 +176,9 @@ class Queue extends CliQueue
     /**
      * Takes one message from waiting list and reserves it for handling.
      *
-     * @return array|false payload
      * @throws Exception in case it hasn't waited the lock
+     *
+     * @return array|false payload
      */
     protected function reserve()
     {
@@ -213,8 +220,6 @@ class Queue extends CliQueue
             return $payload;
         });
     }
-
-
 
     /**
      * @param array $payload

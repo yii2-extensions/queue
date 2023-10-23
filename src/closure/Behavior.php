@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -48,6 +49,7 @@ class Behavior extends \yii\base\Behavior
 
     /**
      * Converts the closure to a job object.
+     *
      * @param PushEvent $event
      */
     public function beforePush(PushEvent $event): void

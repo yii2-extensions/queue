@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -48,7 +49,7 @@ class ClosureTest extends TestCase
             'closure' => function () {
                 $fileName = Yii::getAlias('@runtime/job-3.lock');
                 file_put_contents($fileName, '');
-            }
+            },
         ]);
         $this->getQueue()->push($job);
         $this->getQueue()->run();
@@ -61,7 +62,7 @@ class ClosureTest extends TestCase
         $job = new ClosureJob([
             'closure' => function () use ($fileName) {
                 file_put_contents($fileName, '');
-            }
+            },
         ]);
         $this->getQueue()->push($job);
         $this->getQueue()->run();
@@ -89,7 +90,7 @@ class ClosureTest extends TestCase
      */
     protected function tearDown(): void
     {
-        foreach (glob(Yii::getAlias("@runtime/job-*.lock")) as $fileName) {
+        foreach (glob(Yii::getAlias('@runtime/job-*.lock')) as $fileName) {
             unlink($fileName);
         }
         parent::tearDown();

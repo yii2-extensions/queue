@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -17,6 +18,7 @@ use yii\queue\cli\Queue as CliQueue;
  * Manages application amqp-queue.
  *
  * @author Maksym Kotliar <kotlyar.maksim@gmail.com>
+ *
  * @since 2.0.2
  */
 class Command extends CliCommand

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -24,7 +25,9 @@ use yii\queue\cli\Queue as CliQueue;
 
 /**
  * Stomp Queue.
+ *
  * @author Sergey Vershinin <versh23@gmail.com>
+ *
  * @since 2.3.0
  */
 class Queue extends CliQueue
@@ -72,6 +75,7 @@ class Queue extends CliQueue
     public int $connectionTimeout = 1;
     /**
      * Perform request synchronously.
+     *
      * @var bool
      */
     public bool $sync = false;
@@ -101,6 +105,7 @@ class Queue extends CliQueue
     public string $commandClass = Command::class;
     /**
      * Set the read timeout.
+     *
      * @var int
      */
     public int $readTimeOut = 0;
@@ -157,6 +162,7 @@ class Queue extends CliQueue
      *
      * @param bool $repeat
      * @param int $timeout
+     *
      * @return int|null
      */
     public function run(bool $repeat, int $timeout = 0): ?int
@@ -204,6 +210,7 @@ class Queue extends CliQueue
 
     /**
      * @param StompMessage $message
+     *
      * @return StompMessage
      */
     protected function setMessageId(Message $message): StompMessage
@@ -214,6 +221,7 @@ class Queue extends CliQueue
 
     /**
      * @inheritdoc
+     *
      * @throws QueueException
      * @throws NotSupportedException
      */
@@ -258,6 +266,7 @@ class Queue extends CliQueue
 
     /**
      * @inheritdoc
+     *
      * @throws NotSupportedException
      */
     public function status($id): int
@@ -267,6 +276,7 @@ class Queue extends CliQueue
 
     /**
      * @param StompMessage $message
+     *
      * @throws QueueException
      */
     protected function redeliver(StompMessage $message): void
@@ -288,6 +298,7 @@ class Queue extends CliQueue
 
     /**
      * @param string $name
+     *
      * @return InteropQueue|StompDestination
      */
     private function createQueue(string $name): InteropQueue|StompDestination

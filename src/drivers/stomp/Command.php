@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -18,6 +19,7 @@ use yii\queue\cli\Queue as CliQueue;
  * Manages application stomp-queue.
  *
  * @author Sergey Vershinin <versh23@gmail.com>
+ *
  * @since 2.3.0
  */
 class Command extends CliCommand
@@ -39,7 +41,7 @@ class Command extends CliCommand
      * Runs all jobs from stomp-queue.
      * It can be used as cron job.
      *
-     * @return null|int exit code.
+     * @return int|null exit code.
      */
     public function actionRun(): ?int
     {
@@ -51,8 +53,10 @@ class Command extends CliCommand
      * It can be used as daemon process.
      *
      * @param int $timeout number of seconds to wait a job.
+     *
      * @throws Exception when params are invalid.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
      */
     public function actionListen(int $timeout = 3): ?int
     {

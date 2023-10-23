@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -24,7 +25,7 @@ use yii\redis\Connection;
 class Queue extends CliQueue
 {
     /**
-     * @var Connection|array|string
+     * @var array|Connection|string
      */
     public Connection|string|array $redis = 'redis';
     /**
@@ -50,8 +51,11 @@ class Queue extends CliQueue
      *
      * @param bool $repeat whether to continue listening when queue is empty.
      * @param int $timeout number of seconds to wait for next message.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
+     *
      * @internal for worker command only.
+     *
      * @since 2.0.2
      */
     public function run(bool $repeat, int $timeout = 0): ?int
@@ -107,7 +111,9 @@ class Queue extends CliQueue
      * Removes a job by ID.
      *
      * @param int $id of a job
+     *
      * @return bool
+     *
      * @since 2.0.1
      */
     public function remove(int $id): bool
@@ -129,6 +135,7 @@ class Queue extends CliQueue
 
     /**
      * @param int $timeout timeout
+     *
      * @return array|null payload
      */
     protected function reserve(int $timeout): ?array

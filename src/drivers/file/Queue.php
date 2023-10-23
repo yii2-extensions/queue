@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -66,8 +67,11 @@ class Queue extends CliQueue
      *
      * @param bool $repeat whether to continue listening when queue is empty.
      * @param int $timeout number of seconds to sleep before next iteration.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
+     *
      * @internal for worker command only.
+     *
      * @since 2.0.2
      */
     public function run(bool $repeat, int $timeout = 0): ?int
@@ -123,7 +127,9 @@ class Queue extends CliQueue
      * Removes a job by ID.
      *
      * @param int $id of a job
+     *
      * @return bool
+     *
      * @since 2.0.1
      */
     public function remove($id)
@@ -179,7 +185,7 @@ class Queue extends CliQueue
             if (!empty($data['reserved'])) {
                 foreach ($data['reserved'] as $key => $payload) {
                     if ($payload[1] + $payload[3] < time()) {
-                        list($id, $ttr, $attempt, $time) = $payload;
+                        [$id, $ttr, $attempt, $time] = $payload;
                         $data['reserved'][$key][2] = ++$attempt;
                         $data['reserved'][$key][3] = time();
                         return;
@@ -188,7 +194,7 @@ class Queue extends CliQueue
             }
 
             if (!empty($data['delayed']) && $data['delayed'][0][2] <= time()) {
-                list($id, $ttr, $time) = array_shift($data['delayed']);
+                [$id, $ttr, $time] = array_shift($data['delayed']);
             } elseif (!empty($data['waiting'])) {
                 [$id, $ttr] = array_shift($data['waiting']);
             }
@@ -270,6 +276,7 @@ class Queue extends CliQueue
 
     /**
      * @param callable $callback
+     *
      * @throws InvalidConfigException
      */
     private function touchIndex($callback)
@@ -290,11 +297,11 @@ class Queue extends CliQueue
         $data = [];
         $content = stream_get_contents($file);
         if ($content !== '') {
-            $data = call_user_func($this->indexDeserializer, $content);
+            $data = ($this->indexDeserializer)($content);
         }
         try {
             $callback($data);
-            $newContent = call_user_func($this->indexSerializer, $data);
+            $newContent = ($this->indexSerializer)($data);
             if ($newContent !== $content) {
                 ftruncate($file, 0);
                 rewind($file);

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -44,14 +45,16 @@ abstract class AmqpTestCase extends CliTestCase
 
     /**
      * @param bool $createObject
-     * @return Queue
+     *
      * @throws InvalidConfigException
+     *
+     * @return Queue
      */
     protected function getQueue(bool $createObject = false): Queue
     {
         if ($createObject) {
             /** @var Queue $object */
-            $object = Yii::createObject(array_merge(
+            return Yii::createObject(array_merge(
                 $this->getConnectionConfig(),
                 [
                     'class' => Queue::class,
@@ -61,14 +64,14 @@ abstract class AmqpTestCase extends CliTestCase
                     'exchangeName' => 'exchange-interop',
                 ]
             ));
-            return $object;
         }
         return Yii::$app->amqpInteropQueue;
     }
 
     /**
-     * @return Context|AmqpContext
      * @throws Exception
+     *
+     * @return AmqpContext|Context
      */
     protected function getAMQPContext(): Context|AmqpContext
     {

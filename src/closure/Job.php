@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -28,6 +29,7 @@ class Job implements JobInterface
 
     /**
      * Unserializes and executes a closure.
+     *
      * @inheritdoc
      */
     public function execute(Queue $queue)

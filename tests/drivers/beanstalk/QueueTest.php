@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
 
 namespace tests\drivers\beanstalk;
 
-use Exception;
 use Pheanstalk\Pheanstalk;
 use Pheanstalk\Values\JobId;
 use tests\app\PriorityJob;
@@ -125,8 +125,10 @@ class QueueTest extends CliTestCase
 
     /**
      * @param int|string|null $id of a job
-     * @return bool
+     *
      * @throws
+     *
+     * @return bool
      */
     protected function jobIsExists(int|string|null $id): bool
     {

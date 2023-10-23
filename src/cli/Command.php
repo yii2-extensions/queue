@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -43,6 +44,7 @@ abstract class Command extends Controller
     public bool $verbose = false;
     /**
      * @var array additional options to the verbose behavior.
+     *
      * @since 2.0.2
      */
     public array $verboseConfig = [
@@ -55,6 +57,7 @@ abstract class Command extends Controller
     /**
      * @var string|null path to php interpreter that uses to run child processes.
      * If it is undefined, PHP_BINARY will be used.
+     *
      * @since 2.0.3
      */
     public ?string $phpBinary = null;
@@ -88,13 +91,16 @@ abstract class Command extends Controller
 
     /**
      * @param string $actionID
+     *
      * @return bool
+     *
      * @since 2.0.2
      */
     abstract protected function isWorkerAction(string $actionID): bool;
 
     /**
      * @param string $actionID
+     *
      * @return bool
      */
     protected function canVerbose(string $actionID): bool
@@ -104,6 +110,7 @@ abstract class Command extends Controller
 
     /**
      * @param string $actionID
+     *
      * @return bool
      */
     protected function canIsolate(string $actionID): bool
@@ -140,7 +147,9 @@ abstract class Command extends Controller
      * @param int $ttr time to reserve
      * @param int $attempt number
      * @param int $pid of a worker
+     *
      * @return int exit code
+     *
      * @internal It is used with isolate mode.
      */
     public function actionExec(?string $id, int $ttr, int $attempt, int $pid): int
@@ -158,7 +167,9 @@ abstract class Command extends Controller
      * @param string $message
      * @param int|null $ttr time to reserve
      * @param int $attempt number
+     *
      * @return bool
+     *
      * @see actionExec()
      */
     protected function handleMessage(int|string|null $id, string $message, ?int $ttr, int $attempt): bool

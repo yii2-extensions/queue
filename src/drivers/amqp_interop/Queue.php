@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -32,10 +33,11 @@ use yii\queue\cli\Queue as CliQueue;
 /**
  * Amqp Queue.
  *
- * @property-read AmqpContext $context
- * @property-read AmqpQueue $queue
+ * @property AmqpContext $context
+ * @property AmqpQueue $queue
  *
  * @author Maksym Kotliar <kotlyar.maksim@gmail.com>
+ *
  * @since 2.0.2
  */
 class Queue extends CliQueue
@@ -117,7 +119,9 @@ class Queue extends CliQueue
     public ?bool $persisted = null;
     /**
      * Send keep-alive packets for a socket connection
+     *
      * @var bool
+     *
      * @since 2.3.6
      */
     public bool $keepalive = false;
@@ -192,13 +196,16 @@ class Queue extends CliQueue
      * ```
      *
      * @var array
+     *
      * @since 2.3.3
      * @see https://www.rabbitmq.com/queues.html#optional-arguments
      */
     public array $queueOptionalArguments = [];
     /**
      * Set of flags for the queue
+     *
      * @var int
+     *
      * @since 2.3.5
      * @see AmqpDestination
      */
@@ -211,13 +218,17 @@ class Queue extends CliQueue
     public string $exchangeName = 'exchange';
     /**
      * The exchange type. Can take values: direct, fanout, topic, headers
+     *
      * @var string
+     *
      * @since 2.3.3
      */
     public string $exchangeType = AmqpTopic::TYPE_DIRECT;
     /**
      * Set of flags for the exchange
+     *
      * @var int
+     *
      * @since 2.3.5
      * @see AmqpDestination
      */
@@ -250,6 +261,7 @@ class Queue extends CliQueue
      * ```
      *
      * @var array
+     *
      * @since 2.3.6
      */
     public array $setMessageHeaders = [];
@@ -268,7 +280,7 @@ class Queue extends CliQueue
     protected array $supportedDrivers = [
         self::ENQUEUE_AMQP_LIB,
         self::ENQUEUE_AMQP_EXT,
-        self::ENQUEUE_AMQP_BUNNY
+        self::ENQUEUE_AMQP_BUNNY,
     ];
     /**
      * The property tells whether the setupBroker method was called or not.
@@ -528,9 +540,9 @@ class Queue extends CliQueue
         $newMessage->setProperty(self::ATTEMPT, ++$attempt);
 
         $this->context->createProducer()->send(
-             $this->context->createQueue($this->queueName),
-             $newMessage
-         );
+            $this->context->createQueue($this->queueName),
+            $newMessage
+        );
     }
 
     private function createQueue(): AmqpQueue

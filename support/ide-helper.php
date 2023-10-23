@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use yii\BaseYii;
 use yii\queue\amqp_interop\Queue as AmqpInteropQueue;
@@ -22,7 +22,7 @@ use yii\queue\sync\Queue as SyncQueue;
 class Yii extends BaseYii
 {
     /**
-     * @var BaseApplication|WebApplication|ConsoleApplication the application instance
+     * @var BaseApplication|ConsoleApplication|WebApplication the application instance
      */
     public static $app;
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -27,42 +28,51 @@ class Queue extends CliQueue
 {
     /**
      * The SQS url.
+     *
      * @var string
      */
     public string $url;
     /**
      * aws access key.
+     *
      * @var string|null
      */
     public ?string $key;
     /**
      * aws secret.
+     *
      * @var string|null
      */
     public ?string $secret;
     /**
      * region where queue is hosted.
+     *
      * @var string
      */
     public string $region = '';
     /**
      * API version.
+     *
      * @var string
      */
     public string $version = 'latest';
     /**
      * Message Group ID for FIFO queues.
+     *
      * @var string
+     *
      * @since 2.2.1
      */
     public string $messageGroupId = 'default';
     /**
      * @var string command class name
+     *
      * @inheritdoc
      */
     public string $commandClass = Command::class;
     /**
      * Json serializer by default.
+     *
      * @inheritdoc
      */
     public string|array|SerializerInterface $serializer = JsonSerializer::class;
@@ -77,7 +87,9 @@ class Queue extends CliQueue
      *
      * @param bool $repeat whether to continue listening when queue is empty.
      * @param int $timeout number of seconds to sleep before next iteration.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
+     *
      * @internal for worker command only
      */
     public function run(bool $repeat, int $timeout = 0): ?int
@@ -103,7 +115,8 @@ class Queue extends CliQueue
      * Gets a single message from SQS queue and sets the visibility to reserve message.
      *
      * @param int $timeout number of seconds for long polling. Must be between 0 and 20.
-     * @return null|array payload.
+     *
+     * @return array|null payload.
      */
     protected function reserve(int $timeout): ?array
     {
@@ -171,7 +184,9 @@ class Queue extends CliQueue
      * @param $message string
      * @param $ttr int
      * @param $attempt int
+     *
      * @return bool
+     *
      * @since 2.2.1
      */
     public function handle(string $id, string $message, int $ttr, int $attempt): bool

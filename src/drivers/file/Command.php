@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -52,7 +53,7 @@ class Command extends CliCommand
      * Runs all jobs from file-queue.
      * It can be used as cron job.
      *
-     * @return null|int exit code.
+     * @return int|null exit code.
      */
     public function actionRun(): ?int
     {
@@ -64,8 +65,10 @@ class Command extends CliCommand
      * It can be used as daemon process.
      *
      * @param int $timeout number of seconds to sleep before next reading of the queue.
+     *
      * @throws Exception when params are invalid.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
      */
     public function actionListen(int $timeout = 3): ?int
     {
@@ -92,7 +95,9 @@ class Command extends CliCommand
      * Removes a job by id.
      *
      * @param int $id
+     *
      * @throws Exception when the job is not found.
+     *
      * @since 2.0.1
      */
     public function actionRemove($id)

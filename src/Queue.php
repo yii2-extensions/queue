@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -61,11 +62,12 @@ abstract class Queue extends Component
     /**
      * @var bool whether to enable strict job type control.
      * Note that in order to enable type control, a pushing job must be [[JobInterface]] instance.
+     *
      * @since 2.0.1
      */
     public bool $strictJobType = true;
     /**
-     * @var SerializerInterface|array|string
+     * @var array|SerializerInterface|string
      */
     public string|array|SerializerInterface $serializer = PhpSerializer::class;
     /**
@@ -103,6 +105,7 @@ abstract class Queue extends Component
      * Sets TTR for job execute.
      *
      * @param int|null $value
+     *
      * @return $this
      */
     public function ttr(?int $value): static
@@ -115,6 +118,7 @@ abstract class Queue extends Component
      * Sets delay for later execute.
      *
      * @param int|null $value
+     *
      * @return $this
      */
     public function delay(?int $value): static
@@ -127,6 +131,7 @@ abstract class Queue extends Component
      * Sets job priority.
      *
      * @param int|string|null $value
+     *
      * @return $this
      */
     public function priority(int|string|null $value): static
@@ -139,6 +144,7 @@ abstract class Queue extends Component
      * Pushes job into queue.
      *
      * @param JobInterface|mixed $job
+     *
      * @return int|string|null id of a job message
      */
     public function push($job): int|string|null
@@ -186,7 +192,8 @@ abstract class Queue extends Component
      * @param int $ttr time to reserve in seconds
      * @param int $delay
      * @param mixed $priority
-     * @return string|int|null id of a job message
+     *
+     * @return int|string|null id of a job message
      */
     abstract protected function pushMessage(string $payload, int $ttr, int $delay, mixed $priority): int|string|null;
 
@@ -205,6 +212,7 @@ abstract class Queue extends Component
      * @param string $message
      * @param int $ttr time to reserve
      * @param int $attempt number
+     *
      * @return bool
      */
     protected function handleMessage(int|string $id, string $message, int $ttr, int $attempt): bool
@@ -238,6 +246,7 @@ abstract class Queue extends Component
      * Unserializes.
      *
      * @param string $serialized message
+     *
      * @return array pair of a job and error that
      */
     public function unserializeMessage(string $serialized): array
@@ -260,7 +269,9 @@ abstract class Queue extends Component
 
     /**
      * @param ExecEvent $event
+     *
      * @return bool
+     *
      * @internal
      */
     public function handleError(ExecEvent $event): bool
@@ -277,6 +288,7 @@ abstract class Queue extends Component
 
     /**
      * @param int|string $id of a job message
+     *
      * @return bool
      */
     public function isWaiting(int|string $id): bool
@@ -286,6 +298,7 @@ abstract class Queue extends Component
 
     /**
      * @param int|string $id of a job message
+     *
      * @return bool
      */
     public function isReserved(int|string $id): bool
@@ -295,6 +308,7 @@ abstract class Queue extends Component
 
     /**
      * @param int|string $id of a job message
+     *
      * @return bool
      */
     public function isDone(int|string $id): bool
@@ -303,7 +317,8 @@ abstract class Queue extends Component
     }
 
     /**
-     * @param string|int $id of a job message
+     * @param int|string $id of a job message
+     *
      * @return int status code
      */
     abstract public function status(int|string $id): int;

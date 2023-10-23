@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -22,6 +23,7 @@ abstract class JobEvent extends Event
 {
     /**
      * @var Queue
+     *
      * @inheritdoc
      */
     public $sender;
@@ -30,7 +32,7 @@ abstract class JobEvent extends Event
      */
     public string|int|null $id;
     /**
-     * @var Closure|JobInterface|null|mixed
+     * @var Closure|JobInterface|mixed|null
      */
     public mixed $job;
     /**

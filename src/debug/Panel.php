@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -48,6 +49,7 @@ class Panel extends \yii\debug\Panel implements ViewContextInterface
 
     /**
      * @param PushEvent $event
+     *
      * @return array
      */
     protected function getPushData(PushEvent $event)
@@ -108,7 +110,7 @@ class Panel extends \yii\debug\Panel implements ViewContextInterface
      */
     public function getDetail(): string
     {
-        $jobs = isset($this->data['jobs']) ? $this->data['jobs'] : [];
+        $jobs = $this->data['jobs'] ?? [];
         foreach ($jobs as &$job) {
             $job['status'] = 'unknown';
             /** @var Queue $queue */

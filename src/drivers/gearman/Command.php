@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -37,7 +38,7 @@ class Command extends CliCommand
      * Runs all jobs from gearman-queue.
      * It can be used as cron job.
      *
-     * @return null|int exit code.
+     * @return int|null exit code.
      */
     public function actionRun(): ?int
     {
@@ -48,7 +49,7 @@ class Command extends CliCommand
      * Listens gearman-queue and runs new jobs.
      * It can be used as daemon process.
      *
-     * @return null|int exit code.
+     * @return int|null exit code.
      */
     public function actionListen(): ?int
     {
