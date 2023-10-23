@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -19,6 +20,7 @@ use Throwable;
  * Throws when serialized message cannot be unserialized to a job.
  *
  * @author Roman Zhuravlev <zhuravljov@gmail.com>
+ *
  * @since 2.1.1
  */
 class InvalidJobException extends Exception
@@ -34,8 +36,7 @@ class InvalidJobException extends Exception
         string $message = '',
         int $code = 0,
         Throwable $previous = null
-    )
-    {
+    ) {
         parent::__construct($message, $code, $previous);
     }
 

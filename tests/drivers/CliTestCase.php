@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -39,12 +40,13 @@ abstract class CliTestCase extends TestCase
         $error = $process->getErrorOutput();
         $this->assertEmpty(
             $error,
-            "Can not execute " . implode($cmd) . " command:\n$error"
+            'Can not execute ' . implode($cmd) . " command:\n$error"
         );
     }
 
     /**
      * @param array $cmd
+     *
      * @return Process
      */
     protected function startProcess(array $cmd): Process
@@ -61,6 +63,7 @@ abstract class CliTestCase extends TestCase
 
     /**
      * @param array $cmd
+     *
      * @return array
      */
     private function prepareCmd(array $cmd): array

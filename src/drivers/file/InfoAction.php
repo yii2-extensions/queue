@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -89,7 +90,7 @@ class InfoAction extends Action
         if ($data === null) {
             $fileName = $this->queue->path . '/index.data';
             if (file_exists($fileName)) {
-                $data = call_user_func($this->queue->indexDeserializer, file_get_contents($fileName));
+                $data = ($this->queue->indexDeserializer)(file_get_contents($fileName));
             } else {
                 $data = [];
             }

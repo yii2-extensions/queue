@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -22,6 +23,7 @@ class LogBehavior extends Behavior
 {
     /**
      * @var Queue
+     *
      * @inheritdoc
      */
     public $owner;
@@ -92,6 +94,7 @@ class LogBehavior extends Behavior
 
     /**
      * @param cli\WorkerEvent $event
+     *
      * @since 2.0.2
      */
     public function workerStart(cli\WorkerEvent $event): void
@@ -106,6 +109,7 @@ class LogBehavior extends Behavior
 
     /**
      * @param cli\WorkerEvent $event
+     *
      * @since 2.0.2
      */
     public function workerStop(cli\WorkerEvent $event): void
@@ -120,7 +124,9 @@ class LogBehavior extends Behavior
 
     /**
      * @param JobEvent $event
+     *
      * @return string
+     *
      * @since 2.0.2
      */
     protected function getJobTitle(JobEvent $event): string
@@ -131,7 +137,9 @@ class LogBehavior extends Behavior
 
     /**
      * @param ExecEvent $event
+     *
      * @return string
+     *
      * @since 2.0.2
      */
     protected function getExecTitle(ExecEvent $event): string

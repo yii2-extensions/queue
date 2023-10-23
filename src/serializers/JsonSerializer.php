@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -49,8 +50,10 @@ class JsonSerializer extends BaseObject implements SerializerInterface
 
     /**
      * @param mixed $data
-     * @return array|mixed
+     *
      * @throws InvalidConfigException
+     *
+     * @return array|mixed
      */
     protected function toArray($data)
     {
@@ -83,6 +86,7 @@ class JsonSerializer extends BaseObject implements SerializerInterface
 
     /**
      * @param array $data
+     *
      * @return mixed
      */
     protected function fromArray($data)

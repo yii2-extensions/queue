@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -26,22 +27,26 @@ abstract class Queue extends BaseQueue implements BootstrapInterface
 {
     /**
      * @event WorkerEvent that is triggered when the worker is started.
+     *
      * @since 2.0.2
      */
     public const EVENT_WORKER_START = 'workerStart';
     /**
      * @event WorkerEvent that is triggered each iteration between requests to queue.
+     *
      * @since 2.0.3
      */
     public const EVENT_WORKER_LOOP = 'workerLoop';
     /**
      * @event WorkerEvent that is triggered when the worker is stopped.
+     *
      * @since 2.0.2
      */
     public const EVENT_WORKER_STOP = 'workerStop';
 
     /**
      * @var array|string
+     *
      * @since 2.0.2
      */
     public string|array $loopConfig = SignalLoop::class;
@@ -55,12 +60,14 @@ abstract class Queue extends BaseQueue implements BootstrapInterface
     public array $commandOptions = [];
     /**
      * @var callable|null
+     *
      * @internal for worker command only
      */
     public $messageHandler;
 
     /**
      * @var int|null current process ID of a worker.
+     *
      * @since 2.0.2
      */
     private ?int $_workerPid = null;
@@ -96,7 +103,9 @@ abstract class Queue extends BaseQueue implements BootstrapInterface
      * Runs worker.
      *
      * @param callable $handler
-     * @return null|int exit code
+     *
+     * @return int|null exit code
+     *
      * @since 2.0.2
      */
     protected function runWorker(callable $handler): ?int
@@ -129,7 +138,9 @@ abstract class Queue extends BaseQueue implements BootstrapInterface
      * Gets process ID of a worker.
      *
      * @inheritdoc
+     *
      * @return int|null
+     *
      * @since 2.0.2
      */
     public function getWorkerPid(): ?int
@@ -143,7 +154,7 @@ abstract class Queue extends BaseQueue implements BootstrapInterface
     protected function handleMessage(int|string $id, string $message, int $ttr, int $attempt): bool
     {
         if ($this->messageHandler) {
-            return call_user_func($this->messageHandler, $id, $message, $ttr, $attempt);
+            return ($this->messageHandler)($id, $message, $ttr, $attempt);
         }
 
         return parent::handleMessage($id, $message, $ttr, $attempt);
@@ -155,7 +166,9 @@ abstract class Queue extends BaseQueue implements BootstrapInterface
      * @param int $ttr time to reserve
      * @param int $attempt number
      * @param int|null $workerPid of worker process
+     *
      * @return bool
+     *
      * @internal for worker command only
      */
     public function execute(string $id, string $message, int $ttr, int $attempt, ?int $workerPid): bool

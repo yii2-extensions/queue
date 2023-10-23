@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -35,8 +36,11 @@ class Queue extends CliQueue
      * Listens queue and runs each job.
      *
      * @param bool $repeat whether to continue listening when queue is empty.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
+     *
      * @internal for worker command only.
+     *
      * @since 2.0.2
      */
     public function run(bool $repeat): ?int

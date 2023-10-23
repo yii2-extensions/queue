@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -29,6 +30,7 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * @dataProvider providerSerialize
+     *
      * @param mixed $expected
      */
     public function testSerialize($expected): void
@@ -46,7 +48,7 @@ abstract class TestCase extends BaseTestCase
         return [
             // Job object
             [
-                new SimpleJob(['uid' => 123])
+                new SimpleJob(['uid' => 123]),
             ],
             // Any object
             [
@@ -54,7 +56,7 @@ abstract class TestCase extends BaseTestCase
                     'foo' => 1,
                     'bar' => [
                         new TestObject(['foo' => 1]),
-                    ]
+                    ],
                 ]),
             ],
             // Array of mixed data
@@ -72,7 +74,7 @@ abstract class TestCase extends BaseTestCase
             ],
             // Scalar
             [
-                'string value'
+                'string value',
             ],
         ];
     }

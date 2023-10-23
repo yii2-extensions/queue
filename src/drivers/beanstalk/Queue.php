@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -24,8 +25,8 @@ use yii\queue\cli\Queue as CliQueue;
 /**
  * Beanstalk Queue.
  *
- * @property-read TubeName $tubeName
- * @property-read object $statsTube Tube statistics.
+ * @property TubeName $tubeName
+ * @property object $statsTube Tube statistics.
  *
  * @author Roman Zhuravlev <zhuravljov@gmail.com>
  */
@@ -63,8 +64,11 @@ class Queue extends CliQueue
      *
      * @param bool $repeat whether to continue listening when queue is empty.
      * @param int<0, max> $timeout number of seconds to wait for next message.
-     * @return null|int exit code.
+     *
+     * @return int|null exit code.
+     *
      * @internal for worker command only.
+     *
      * @since 2.0.2
      */
     public function run(bool $repeat, int $timeout = 0): ?int
@@ -123,7 +127,9 @@ class Queue extends CliQueue
      * Removes a job by ID.
      *
      * @param int|string $id of a job
+     *
      * @return bool
+     *
      * @since 2.0.1
      */
     public function remove(int|string $id): bool

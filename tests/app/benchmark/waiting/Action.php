@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -30,23 +31,23 @@ class Action extends BaseAction
     public array $modes = [
         // Worker will be run in fast mode
         'fast' => [
-            'gearmanQueue'     => ['gearman-queue/listen'      ,'--isolate=0'],
-            'beanstalkQueue'   => ['beanstalk-queue/listen'    ,'--isolate=0'],
-            'redisQueue'       => ['redis-queue/listen'        ,'--isolate=0'],
+            'gearmanQueue' => ['gearman-queue/listen'      ,'--isolate=0'],
+            'beanstalkQueue' => ['beanstalk-queue/listen'    ,'--isolate=0'],
+            'redisQueue' => ['redis-queue/listen'        ,'--isolate=0'],
             'amqpInteropQueue' => ['amqp-interop-queue/listen' ,'--isolate=0'],
-            'mysqlQueue'       => ['mysql-queue/listen', '1'   ,'--isolate=0'],
-            'fileQueue'        => ['file-queue/listen' , '1'   ,'--isolate=0'],
-            'stompQueue'       => ['stomp-queue/listen'        ,'--isolate=0'],
+            'mysqlQueue' => ['mysql-queue/listen', '1'   ,'--isolate=0'],
+            'fileQueue' => ['file-queue/listen' , '1'   ,'--isolate=0'],
+            'stompQueue' => ['stomp-queue/listen'        ,'--isolate=0'],
         ],
         // Worker will be run in isolate mode
         'isolate' => [
-            'gearmanQueue'     => ['gearman-queue/listen'      ,'--isolate=1'],
-            'beanstalkQueue'   => ['beanstalk-queue/listen'    ,'--isolate=1'],
-            'redisQueue'       => ['redis-queue/listen'        ,'--isolate=1'],
+            'gearmanQueue' => ['gearman-queue/listen'      ,'--isolate=1'],
+            'beanstalkQueue' => ['beanstalk-queue/listen'    ,'--isolate=1'],
+            'redisQueue' => ['redis-queue/listen'        ,'--isolate=1'],
             'amqpInteropQueue' => ['amqp-interop-queue/listen' ,'--isolate=1'],
-            'mysqlQueue'       => ['mysql-queue/listen', '1'   ,'--isolate=1'],
-            'fileQueue'        => ['file-queue/listen' , '1'   ,'--isolate=1'],
-            'stompQueue'       => ['stomp-queue/listen', '1'   ,'--isolate=1'],
+            'mysqlQueue' => ['mysql-queue/listen', '1'   ,'--isolate=1'],
+            'fileQueue' => ['file-queue/listen' , '1'   ,'--isolate=1'],
+            'stompQueue' => ['stomp-queue/listen', '1'   ,'--isolate=1'],
         ],
     ];
     /**
@@ -61,6 +62,7 @@ class Action extends BaseAction
      * @param int $jobCount number of jobs that will be pushed to a queue
      * @param int $workerCount number of workers that listen a queue
      * @param int $payloadSize additional job size
+     *
      * @throws
      */
     public function run(string $mode = 'fast', int $jobCount = 1000, int $workerCount = 10, int $payloadSize = 0): void
@@ -69,10 +71,10 @@ class Action extends BaseAction
             throw new ConsoleException("Unknown mode: $mode.");
         }
         if ($jobCount <= 0) {
-            throw new ConsoleException("Job count must be greater than zero.");
+            throw new ConsoleException('Job count must be greater than zero.');
         }
         if ($workerCount <= 0) {
-            throw new ConsoleException("Worker count must be greater than zero.");
+            throw new ConsoleException('Worker count must be greater than zero.');
         }
 
         foreach ($this->modes[$mode] as $queueName => $workerCommand) {
@@ -96,7 +98,6 @@ class Action extends BaseAction
 
                 $pushedCount = 0;
                 while ($pushedCount < $jobCount) {
-
                     // Push batch of jobs
                     $jobs = [];
                     for ($i = 0; $i < $workerCount && $pushedCount < $jobCount; $i++) {
@@ -167,6 +168,7 @@ class Action extends BaseAction
      *
      * @param string $fileName of result storage
      * @param int $scale
+     *
      * @return array of aggregate results in seconds
      */
     private function calcResult(string $fileName, int $scale): array

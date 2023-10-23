@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -16,6 +17,7 @@ use yii\base\BaseObject;
  * Signal Loop.
  *
  * @author Roman Zhuravlev <zhuravljov@gmail.com>
+ *
  * @since 2.0.2
  */
 class SignalLoop extends BaseObject implements LoopInterface
@@ -56,6 +58,7 @@ class SignalLoop extends BaseObject implements LoopInterface
 
     /**
      * @param Queue $queue
+     *
      * @inheritdoc
      */
     public function __construct($queue, array $config = [])
